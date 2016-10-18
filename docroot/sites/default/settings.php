@@ -249,7 +249,7 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'ems',
+      'database' => 'ems_st',
       'username' => 'root',
       'password' => '',
       'host' => 'localhost',
@@ -259,6 +259,8 @@ $databases = array (
     ),
   ),
 );
+
+$conf['theme_debug'] = TRUE;
 
 /**
  * Access control for update.php script.
