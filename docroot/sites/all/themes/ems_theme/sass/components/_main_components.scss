@@ -1,12 +1,49 @@
 
 body {
   background:#444;
-  color:#fff;
+  color:#000;
 }
-
+.container {
+  width:1024px;
+}
 .l-content {
-  background: url('../../images/bg.jpg');
-
+  background: url('../images/bg.jpg');
   margin: 0 auto 10px;
   box-shadow: 0px 0px 10px #000;
+}
+
+.webform-client-form label {
+  color: #58595B;
+  width: 180px;
+  display: block;
+  float: left;
+}
+
+.webform-client-form .form-item .form-radios,
+.webform-client-form .form-item .form-checkboxes {
+  width: 650px;
+  float: left;
+  margin: 0 0 0 20px;
+}
+
+.webform-client-form .form-item .form-checkboxes .form-item,
+.webform-client-form .form-item .form-radios .form-item{
+  width: 600px;
+  margin: 0 10px 5px 0;
+  font-size: 0.9em;
+  text-align: left;
+  float: left;
+}
+
+.webform-client-form .form-item .form-radios .form-item label,
+.webform-client-form .form-item .form-checkboxes .form-item label {
+  width: 300px;
+  float: left;
+}
+
+.webform-client-form .form-item .form-radios .form-item input.form-radio,
+.webform-client-form .form-item .form-checkboxes .form-item input.form-checkbox {
+  width: 20px;
+  float: left;
+  margin: 5px 0 0 0;
 }

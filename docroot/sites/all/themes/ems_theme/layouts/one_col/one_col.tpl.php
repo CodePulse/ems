@@ -82,12 +82,12 @@
       </div>
 
       <div class="ems-menu col-md-4">
-        hello
+        menu placeholder
         <?php print render($page['menu']); ?>
       </div>
 
       <div class="ems-slogan col-md-4">
-        bye
+        slogan placeholder
         <?php if ($site_slogan): ?>
           <h2 class="site-slogan"><?php print $site_slogan; ?></h2>
         <?php endif; ?>
