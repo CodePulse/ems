@@ -5571,3 +5571,9 @@ body {
   font-size: 12px;
   color:#58595B;
 }
+
+#edit-submitted-attendee-set-attendee-type .form-item.form-type-checkbox {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+}
