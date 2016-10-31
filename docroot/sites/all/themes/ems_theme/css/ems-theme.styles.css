@@ -5570,10 +5570,18 @@ body {
 .form-item .description, .form-actions .description {
   font-size: 12px;
   color:#58595B;
+  margin-left: 21%;
+  width: 552px;
 }
 
 #edit-submitted-attendee-set-attendee-type .form-item.form-type-checkbox {
   display: inline;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.webform-component-textfield label {
+  display: inline-block;
+  width: 200px;
+  margin:0;
 }
