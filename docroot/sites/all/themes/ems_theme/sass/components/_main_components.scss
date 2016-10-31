@@ -47,3 +47,16 @@ body {
   float: left;
   margin: 5px 0 0 0;
 }
+
+input.form-submit {
+  background-color: #ccc;
+  background-image: -moz-linear-gradient(center bottom, #A4A4A6 21%, #E0DDE0 61%);
+  border: 0 none;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-radius: 4px 4px 4px 4px;
+  color: #006C85;
+  cursor: pointer;
+  margin: 10px 0 40px 0;
+}
