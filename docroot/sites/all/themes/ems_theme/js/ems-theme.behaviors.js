@@ -57,4 +57,27 @@
     }
   };
 
-})(jQuery);
+
+  Drupal.behaviors.conditions = {
+    attach: function (context, settings) {
+      $('#edit-submitted-will-you-be-attending-the-main-conference-2').click(function() {
+        if($(this).is(':checked') && $('#edit-submitted-will-you-be-attending-the-main-conference-2').val() == 2) {
+          //alert('che');
+          //alert($(this).val());
+          $('.webform-component--thursday-track-choices').hide();
+          $('.webform-component--wednesday-track-choices').hide();
+        }
+        else {
+          //$('.webform-component--thursday-track-choices').css({'display': ''});
+          //$('.webform-component--wednesday-track-choices').css({'display': ''});
+
+        }
+        //if($('#edit-submitted-will-you-be-attending-the-main-conference-2').is(':checked') && $('#edit-submitted-will-you-be-attending-the-main-conference-2').val() == 2) {
+        //  $('.webform-component--thursday-track-choices').show();
+        //  $('.webform-component--wednesday-track-choices').show();
+        //}
+      });
+    }
+  }
+
+    })(jQuery);

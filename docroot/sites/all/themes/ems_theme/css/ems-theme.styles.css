@@ -1746,16 +1746,6 @@ hr {
 .field--name-field-product-body .field__label {
   display: none; }
 
-/* line 1223, ../sass/components/_ems_bootstrap.scss */
-fieldset {
-  border: 0;
-  padding: 0;
-  text-align: center; }
-
-/* line 1227, ../sass/components/_ems_bootstrap.scss */
-fieldset legend {
-  display: none; }
-
 /* line 1230, ../sass/components/_ems_bootstrap.scss */
 .button-operator {
   display: none; }
@@ -5524,11 +5514,9 @@ body {
   box-shadow: 0px 0px 10px #000; }
 
 /*!* line 15, ../sass/components/_main_components.scss *!*/
-/*.webform-client-form label {*/
-  /*color: #58595B;*/
-  /*width: 180px;*/
-  /*display: block;*/
-  /*float: left; }*/
+.webform-client-form label {
+  color: #58595B;
+  }
 
 /*!* line 22, ../sass/components/_main_components.scss *!*/
 /*.webform-client-form .form-item .form-radios,*/
@@ -5573,3 +5561,13 @@ body {
   /*margin: 10px 0 40px 0; }*/
 
 /*# sourceMappingURL=ems-theme.styles.css.map */
+
+.webform-component-fieldset a.fieldset-title {
+  color: #00add8;
+  font-weight: bold;
+  text-decoration: none;
+}
+.form-item .description, .form-actions .description {
+  font-size: 12px;
+  color:#58595B;
+}

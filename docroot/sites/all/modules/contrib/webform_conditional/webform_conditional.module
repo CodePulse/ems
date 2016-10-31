@@ -22,7 +22,7 @@ function webform_conditional_form_webform_component_edit_form_alter(&$form, &$fo
       //if there are any same page component add function to handle values
       array_unshift($form['#submit'], 'webform_condtional_component_edit_submit');
       $form['conditional']['#access'] = TRUE;
-      $form['conditional']['extra']['conditional_component']['#options'] = $form['conditional']['extra']['conditional_component']['#options'] + $triggerComponents;
+//      $form['conditional']['extra']['conditional_component']['#options'] = $form['conditional']['extra']['conditional_component']['#options'] + $triggerComponents;
       $default_value = trim($form['conditional']['extra']['conditional_values']['#default_value']);
       if (empty($default_value)) {
         //no regular conditional values
