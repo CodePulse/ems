@@ -60,6 +60,10 @@
 
   Drupal.behaviors.conditions = {
     attach: function (context, settings) {
+      $('#edit-submitted-attendee-set-organisation-type', context).on('change', function(){
+        $('.webform-component--thursday-track-choices').hide();
+        $('.webform-component--wednesday-track-choices').hide();
+      });
       $('#edit-submitted-will-you-be-attending-the-main-conference-2').click(function() {
         if($(this).is(':checked') && $('#edit-submitted-will-you-be-attending-the-main-conference-2').val() == 2) {
           //alert('che');

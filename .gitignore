@@ -5,9 +5,6 @@
 /docroot/files/*
 /docroot/cache
 
-# Ignore css files these will be built on deploy
-/docroot/sites/all/themes/*/css
-
 # ** Only works in OSs that support newer versions of fnmatch (Bash 4+)
 /docroot/sites/default/**/files
 /docroot/sites/default/**/private
