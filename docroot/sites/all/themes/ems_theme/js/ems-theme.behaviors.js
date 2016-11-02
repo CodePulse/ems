@@ -60,26 +60,29 @@
 
   Drupal.behaviors.conditions = {
     attach: function (context, settings) {
-      $('#edit-submitted-attendee-set-organisation-type', context).on('change', function(){
-        $('.webform-component--thursday-track-choices').hide();
-        $('.webform-component--wednesday-track-choices').hide();
+      $('#edit-submitted-attendee-set-organisation-type', context).change(function(){
+        $('.webform-component--conference-set--wednesday-track-choices', context).hide();
+        $('.webform-component--conference-set--thursday-track-choices', context).hide();
       });
-      $('#edit-submitted-will-you-be-attending-the-main-conference-2').click(function() {
-        if($(this).is(':checked') && $('#edit-submitted-will-you-be-attending-the-main-conference-2').val() == 2) {
-          //alert('che');
-          //alert($(this).val());
-          $('.webform-component--thursday-track-choices').hide();
-          $('.webform-component--wednesday-track-choices').hide();
+
+      $('#edit-submitted-conference-set-will-you-be-attending-the-main-conference-1').click(function() {
+        if($(this).is(':checked')) {
+          $('#edit-submitted-conference-set-academic-pricing-0-22').attr('checked', false);
+          $('#edit-submitted-conference-set-academic-pricing-0-23').attr('checked', false);
+          $('#edit-submitted-conference-set-academic-pricing-0-5').attr('checked', false);
         }
-        else {
-          //$('.webform-component--thursday-track-choices').css({'display': ''});
-          //$('.webform-component--wednesday-track-choices').css({'display': ''});
+      });
+      
+      $('#edit-submitted-conference-set-will-you-be-attending-the-main-conference-2').click(function() {
+        if($(this).is(':checked')) {
+          $('.webform-component--conference-set--wednesday-track-choices', context).hide();
+          $('.webform-component--conference-set--thursday-track-choices', context).hide();
+
+          $('#edit-submitted-conference-set-academic-pricing-0-22').attr('checked', false);
+          $('#edit-submitted-conference-set-academic-pricing-0-23').attr('checked', false);
+          $('#edit-submitted-conference-set-academic-pricing-0-5').attr('checked', false);
 
         }
-        //if($('#edit-submitted-will-you-be-attending-the-main-conference-2').is(':checked') && $('#edit-submitted-will-you-be-attending-the-main-conference-2').val() == 2) {
-        //  $('.webform-component--thursday-track-choices').show();
-        //  $('.webform-component--wednesday-track-choices').show();
-        //}
       });
     }
   }
