@@ -70,9 +70,13 @@
           $('#edit-submitted-conference-set-academic-pricing-0-22').attr('checked', false);
           $('#edit-submitted-conference-set-academic-pricing-0-23').attr('checked', false);
           $('#edit-submitted-conference-set-academic-pricing-0-5').attr('checked', false);
+
+          $('#edit-submitted-conference-set-full-conference-0-2').attr('checked', false);
+          $('#edit-submitted-conference-set-full-conference-0-3').attr('checked', false);
+          $('#edit-submitted-conference-set-full-conference-0-4').attr('checked', false);
         }
       });
-      
+
       $('#edit-submitted-conference-set-will-you-be-attending-the-main-conference-2').click(function() {
         if($(this).is(':checked')) {
           $('.webform-component--conference-set--wednesday-track-choices', context).hide();
@@ -81,6 +85,11 @@
           $('#edit-submitted-conference-set-academic-pricing-0-22').attr('checked', false);
           $('#edit-submitted-conference-set-academic-pricing-0-23').attr('checked', false);
           $('#edit-submitted-conference-set-academic-pricing-0-5').attr('checked', false);
+
+          $('#edit-submitted-conference-set-full-conference-0-2').attr('checked', false);
+          $('#edit-submitted-conference-set-full-conference-0-3').attr('checked', false);
+          $('#edit-submitted-conference-set-full-conference-0-4').attr('checked', false);
+
 
         }
       });
