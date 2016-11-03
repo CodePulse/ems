@@ -5573,13 +5573,20 @@ body {
   margin-left: 21%;
   width: 552px;
 }
+.webform-component--conference-set--networking-sessions label {
+  margin-bottom:0;
+}
 
+#edit-submitted-conference-set-networking-sessions  .description {
+  margin-left:0;
+}
 #edit-submitted-attendee-set-attendee-type .form-item.form-type-checkbox {
   display: inline;
   padding-left: 10px;
   padding-right: 10px;
 }
 
+.webform-component-select label,
 .webform-component-textfield label {
   display: inline-block;
   width: 200px;

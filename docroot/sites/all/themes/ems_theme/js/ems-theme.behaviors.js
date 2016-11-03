@@ -93,6 +93,8 @@
 
         }
       });
+
+      $('.webform-component--conference-set--networking-sessions .description').prependTo('#edit-submitted-conference-set-networking-sessions');
     }
   }
 
