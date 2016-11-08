@@ -95,6 +95,7 @@
       });
 
       $('.webform-component--conference-set--networking-sessions .description').prependTo('#edit-submitted-conference-set-networking-sessions');
+      $('.webform-component--conference-set--academic-pricing .description').prependTo('#edit-submitted-conference-set-academic-pricing-0');
     }
   }
 
