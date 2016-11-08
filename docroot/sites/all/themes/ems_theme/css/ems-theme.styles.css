@@ -5577,6 +5577,7 @@ body {
   margin-bottom:0;
 }
 
+.webform-component--conference-set--academic-pricing  .description,
 #edit-submitted-conference-set-networking-sessions  .description {
   margin-left:0;
 }
