@@ -5577,6 +5577,8 @@ body {
   margin-bottom:0;
 }
 
+.webform-component--conference-set--academic-workshops .description,
+.webform-component--conference-set--industrial-workshops .description,
 .webform-component--conference-set--full-conference  .description,
 .webform-component--conference-set--industrial-pricing  .description,
 .webform-component--conference-set--academic-pricing  .description,
@@ -5585,6 +5587,8 @@ body {
   margin-bottom: 10px;
 }
 label[for="edit-submitted-conference-set-full-conference"],
+label[for="edit-submitted-conference-set-academic-workshops"],
+label[for="edit-submitted-conference-set-industrial-conference"],
 label[for="edit-submitted-conference-set-academic-pricing"] {
  margin-bottom: 0;
 }
