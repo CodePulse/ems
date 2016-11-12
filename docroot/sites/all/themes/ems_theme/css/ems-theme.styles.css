@@ -5578,10 +5578,17 @@ body {
 }
 
 .webform-component--conference-set--full-conference  .description,
+.webform-component--conference-set--industrial-pricing  .description,
 .webform-component--conference-set--academic-pricing  .description,
 #edit-submitted-conference-set-networking-sessions  .description {
   margin-left:0;
+  margin-bottom: 10px;
 }
+label[for="edit-submitted-conference-set-full-conference"],
+label[for="edit-submitted-conference-set-academic-pricing"] {
+ margin-bottom: 0;
+}
+
 #edit-submitted-attendee-set-attendee-type .form-item.form-type-checkbox {
   display: inline;
   padding-left: 10px;
@@ -5612,4 +5619,7 @@ input.form-submit {
   color: #006C85;
   cursor: pointer;
   margin: 10px 0 40px 0;
+}
+.views-table {
+  width:100%
 }
