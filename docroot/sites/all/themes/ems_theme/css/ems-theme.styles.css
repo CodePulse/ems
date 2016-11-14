@@ -5586,6 +5586,8 @@ body {
   margin-left:0;
   margin-bottom: 10px;
 }
+
+label[for="edit-submitted-conference-set-industrial-workshops"],
 label[for="edit-submitted-conference-set-full-conference"],
 label[for="edit-submitted-conference-set-academic-workshops"],
 label[for="edit-submitted-conference-set-industrial-conference"],
