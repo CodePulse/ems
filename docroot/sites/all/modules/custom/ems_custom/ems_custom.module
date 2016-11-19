@@ -14,5 +14,97 @@ function ems_custom_form_alter(&$form, &$form_state, $form_id) {
       }
     }
   }
+}
 
+/**
+ * Implements hook_commerce_cart_order_refresh().
+ *
+ * @see hook_commerce_cart_order_refresh();
+ */
+function ems_custom_commerce_cart_order_refresh($order_wrapper) {
+  $line_items = $order_wrapper->commerce_line_items->value();
+
+  $workshop_term_object = taxonomy_get_term_by_name('Workshop product', 'product_flag');
+  $workshop_term_tid = array_shift($workshop_term_object)->tid;
+
+  $industrial = 0;
+  $academic = 0;
+
+  $workshop_types_count = [
+    'industrial' => $industrial,
+    'academic' => $academic,
+  ];
+
+  foreach ($line_items as $id => $line_item) {
+
+    // if there is a 'workshop product' discount in the cart, lets remove it,
+    // make the calculations again to see if the current cart is eligible for
+    // this discount
+    if ($line_item->type == 'product_discount' && $line_item->line_item_label == 'workshop-discount') {
+      commerce_line_item_delete($line_item->line_item_id);
+    }
+
+    $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
+
+    $product = $line_item_wrapper->commerce_product->value();
+    $product_type = field_get_items('commerce_product', $product, 'field_product_type');
+
+    if (!empty($product_type)) {
+      $workshop_type = field_get_items('commerce_product', $product, 'field_workshop_type');
+      // If the currently loaded workshop TID =='s what is currently on the product
+      // workshop, then lets begin sorting out the organisation types.
+      if ($workshop_term_tid == $product_type[0]['tid']) {
+        switch (strtolower($workshop_type[0]['value'])) {
+          case 'industrial':
+            $industrial++;
+            break;
+          case 'academic':
+            $academic++;
+            break;
+        }
+      }
+    }
+
+    $discount_for = '';
+    foreach ($workshop_types_count as $key => $count) {
+      if ($count === 2) {
+        $discount_for = $key;
+      }
+    }
+
+    $discount_price = 0;
+    switch ($discount_for) {
+      case 'industrial':
+        $discount_price = 1000;
+        break;
+      case 'academic':
+        $discount_price = 200;
+        break;
+    }
+
+    $discount_line_item = commerce_line_item_new('product_discount', $order_wrapper->getIdentifier());
+    $discount_line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $discount_line_item);
+
+    $workshop_discount_product = commerce_product_load_by_sku('workshop-discount-product');
+
+    // Create the 3for2 line item and assign it to the current order with a negative
+    // unit price
+    $discount_line_item_wrapper->line_item_label = t('workshop-discount');
+    $discount_line_item_wrapper->quantity = 1;
+    $discount_line_item_wrapper->commerce_product = $workshop_discount_product->product_id;
+    $discount_line_item_wrapper->commerce_unit_price->amount = -$discount_price;
+    $discount_line_item_wrapper->commerce_unit_price->currency_code = 'GBP';
+    $discount_line_item_wrapper->commerce_unit_price->data = commerce_price_component_add(
+      $discount_line_item_wrapper->commerce_unit_price->value(),
+      'base_price',
+      $discount_line_item_wrapper->commerce_unit_price->value(),
+      TRUE,
+      FALSE
+    );
+
+    commerce_line_item_save($discount_line_item);
+    $order_wrapper->commerce_line_items[] = $discount_line_item;
+    $order_wrapper->save();
+
+  }
 }
