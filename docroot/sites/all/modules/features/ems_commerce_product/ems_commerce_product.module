@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the EMS - Commerce Product feature.
+ */
+
+include_once 'ems_commerce_product.features.inc';
