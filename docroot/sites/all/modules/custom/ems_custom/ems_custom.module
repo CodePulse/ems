@@ -49,7 +49,7 @@ function ems_custom_commerce_cart_order_refresh($order_wrapper) {
   $discount_price = 0;
 
   if (!empty($line_items)) {
-    
+
     foreach ($line_items as $id => $line_item) {
 
       // if there is a 'workshop product' discount in the cart, lets remove it,
@@ -61,22 +61,26 @@ function ems_custom_commerce_cart_order_refresh($order_wrapper) {
 
       $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
 
-      $product = $line_item_wrapper->commerce_product->value();
-      $product_type = field_get_items('commerce_product', $product, 'field_product_type');
+      $product = $line_item_wrapper->__isset('commerce_product');
+      if ($product) {
+        $product_entity = $line_item_wrapper->commerce_product->value();
 
-      if (!empty($product_type)) {
-        $workshop_type = field_get_items('commerce_product', $product, 'field_workshop_type');
-        // If the currently loaded workshop TID =='s what is currently on the product
-        // workshop, then lets begin sorting out the organisation types.
-        if ($workshop_term_tid == $product_type[0]['tid']) {
-          $workshop_value = strtolower($workshop_type[0]['value']);
-          switch ($workshop_value) {
-            case 'industrial':
-              $industrial++;
-              break;
-            case 'academic':
-              $academic++;
-              break;
+        $product_type = field_get_items('commerce_product', $product_entity, 'field_product_type');
+
+        if (!empty($product_type)) {
+          $workshop_type = field_get_items('commerce_product', $product_entity, 'field_workshop_type');
+          // If the currently loaded workshop TID =='s what is currently on the product
+          // workshop, then lets begin sorting out the organisation types.
+          if ($workshop_term_tid == $product_type[0]['tid']) {
+            $workshop_value = strtolower($workshop_type[0]['value']);
+            switch ($workshop_value) {
+              case 'industrial':
+                $industrial++;
+                break;
+              case 'academic':
+                $academic++;
+                break;
+            }
           }
         }
       }
