@@ -5629,3 +5629,89 @@ input.form-submit {
 .views-table {
   width:100%
 }
+tr.odd {
+}
+tr.even, tr.odd {
+  background-color: inherit;
+}
+
+.view-commerce-cart-form .delete-line-item.form-submit:hover {
+  background-color: #d2322d;
+}
+.view-commerce-cart-form .delete-line-item.form-submit{
+  color: #fff;
+  background-color: #d9534f;
+  /*border-color: #ac2925;*/
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.checkout-continue,
+#commerce-checkout-coupon-ajax-wrapper .form-submit,
+.view-commerce-cart-form #edit-checkout {
+  font-size: 95%;
+  background-color: #006c85;
+  background-image: linear-gradient(bottom, rgb(4,59,71) 14%, rgb(0,109,133) 57%);
+  background-image: -o-linear-gradient(bottom, rgb(4,59,71) 14%, rgb(0,109,133) 57%);
+  background-image: -moz-linear-gradient(bottom, rgb(4,59,71) 14%, rgb(0,109,133) 57%);
+  background-image: -webkit-linear-gradient(bottom, rgb(4,59,71) 14%, rgb(0,109,133) 57%);
+  background-image: -ms-linear-gradient(bottom, rgb(4,59,71) 14%, rgb(0,109,133) 57%);
+  background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.14, rgb(4,59,71)), color-stop(0.57, rgb(0,109,133)));
+  display: inline-block;
+  margin-top: 1em;
+  color: #fff !important;
+  border-radius: 4px;
+  padding: 5px 20px 5px 20px;
+  -moz-box-shadow: 0px 0px 5px #ccc;
+  -webkit-box-shadow: 0px 0px 5px #ccc;
+  box-shadow: 0px 0px 5px #ccc;
+  border: 0 none;
+  text-transform: none;
+  font-weight: normal;
+}
+body {
+  font-family: "news-gothic-std", "NewsGothic", "News Cycle", "Calibri", "Arial Narrow", "Geneva", "Helvetica", "Arial";
+}
+.commerce_payment.form-wrapper,
+#commerce-checkout-coupon-ajax-wrapper,
+.cart_contents,
+.customer_profile_billing.form-wrapper {
+  background: #ccc;
+  padding: 20px;
+  margin-bottom:20px;
+}
+.commerce-checkout-form-review fieldset legend,
+.commerce-checkout-form-checkout fieldset legend {
+  display:none;
+}
+
+.checkout-buttons .checkout-back,
+.checkout-buttons .checkout-cancel {
+  background-color: #ccc;
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.21, rgb(164,164,166)),color-stop(0.61, rgb(224,221,224)));
+  background-image: -webkit-linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
+  background-image: -o-linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
+  background-image: -moz-linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
+  background-image: linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
+  color: #006c85;
+  margin-top: 0;
+}
+table.checkout-review {
+  width:100%;
+}

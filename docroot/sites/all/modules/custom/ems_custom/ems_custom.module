@@ -19,6 +19,21 @@ function ems_custom_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_state, $form_id) {
+  $form['buttons']['continue']['#weight'] = 1000;
+  $form['buttons']['back']['#weight'] = -1000;
+  $form['buttons']['cancel']['#weight'] = -1000;
+}
+
+function ems_custom_form_commerce_checkout_form_review_alter(&$form, &$form_state, $form_id) {
+  $form['buttons']['continue']['#weight'] = 1000;
+  $form['buttons']['back']['#weight'] = -1000;
+  $form['buttons']['cancel']['#weight'] = -1000;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
 function ems_custom_form_views_form_commerce_cart_form_default_alter(&$form, &$form_state, $form_id) {
 
   foreach ($form['edit_quantity'] as $id => $cart_line_item) {
@@ -30,6 +45,9 @@ function ems_custom_form_views_form_commerce_cart_form_default_alter(&$form, &$f
       }
     }
   }
+
+  // There will be no need to update the cart, so lets hide it.
+  $form['actions']['submit']['#access'] = FALSE;
 }
 
 /**
