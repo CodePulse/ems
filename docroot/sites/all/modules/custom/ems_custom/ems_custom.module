@@ -48,84 +48,87 @@ function ems_custom_commerce_cart_order_refresh($order_wrapper) {
 
   $discount_price = 0;
 
-  foreach ($line_items as $id => $line_item) {
+  if (!empty($line_items)) {
+    
+    foreach ($line_items as $id => $line_item) {
 
-    // if there is a 'workshop product' discount in the cart, lets remove it,
-    // make the calculations again to see if the current cart is eligible for
-    // this discount
-    if ($line_item->type == 'product_discount' && $line_item->line_item_label == 'workshop-discount') {
-      commerce_line_item_delete($line_item->line_item_id);
-    }
+      // if there is a 'workshop product' discount in the cart, lets remove it,
+      // make the calculations again to see if the current cart is eligible for
+      // this discount
+      if ($line_item->type == 'product_discount' && $line_item->line_item_label == 'workshop-discount') {
+        commerce_line_item_delete($line_item->line_item_id);
+      }
 
-    $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
+      $line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $line_item);
 
-    $product = $line_item_wrapper->commerce_product->value();
-    $product_type = field_get_items('commerce_product', $product, 'field_product_type');
+      $product = $line_item_wrapper->commerce_product->value();
+      $product_type = field_get_items('commerce_product', $product, 'field_product_type');
 
-    if (!empty($product_type)) {
-      $workshop_type = field_get_items('commerce_product', $product, 'field_workshop_type');
-      // If the currently loaded workshop TID =='s what is currently on the product
-      // workshop, then lets begin sorting out the organisation types.
-      if ($workshop_term_tid == $product_type[0]['tid']) {
-        $workshop_value = strtolower($workshop_type[0]['value']);
-        switch ($workshop_value) {
-          case 'industrial':
-            $industrial++;
-            break;
-          case 'academic':
-            $academic++;
-            break;
+      if (!empty($product_type)) {
+        $workshop_type = field_get_items('commerce_product', $product, 'field_workshop_type');
+        // If the currently loaded workshop TID =='s what is currently on the product
+        // workshop, then lets begin sorting out the organisation types.
+        if ($workshop_term_tid == $product_type[0]['tid']) {
+          $workshop_value = strtolower($workshop_type[0]['value']);
+          switch ($workshop_value) {
+            case 'industrial':
+              $industrial++;
+              break;
+            case 'academic':
+              $academic++;
+              break;
+          }
         }
       }
     }
-  }
 
-  $workshop_types_count = [
-    'industrial' => $industrial,
-    'academic' => $academic,
-  ];
+    $workshop_types_count = [
+      'industrial' => $industrial,
+      'academic' => $academic,
+    ];
 
-  $discount_for = '';
-  foreach ($workshop_types_count as $key => $count) {
-    if ($count == 2) {
-      $discount_for = $key;
+    $discount_for = '';
+    foreach ($workshop_types_count as $key => $count) {
+      if ($count == 2) {
+        $discount_for = $key;
+      }
     }
-  }
 
-  switch ($discount_for) {
-    case 'industrial':
-      $discount_price = -7000;
-      break;
-    case 'academic':
-      $discount_price = -3500;
-      break;
-  }
+    switch ($discount_for) {
+      case 'industrial':
+        $discount_price = -7000;
+        break;
+      case 'academic':
+        $discount_price = -3500;
+        break;
+    }
 
-  // if $discount_for is not blank then it means we've got a cart thats eligible
-  // so lets create the discount line item, or else we have to make sure we dont
-  // create a line item with price of 0;
+    // if $discount_for is not blank then it means we've got a cart thats eligible
+    // so lets create the discount line item, or else we have to make sure we dont
+    // create a line item with price of 0;
 
-  if ($discount_for != "") {
-    $discount_line_item = commerce_line_item_new('product_discount', $order_wrapper->getIdentifier());
-    $discount_line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $discount_line_item);
+    if ($discount_for != "") {
+      $discount_line_item = commerce_line_item_new('product_discount', $order_wrapper->getIdentifier());
+      $discount_line_item_wrapper = entity_metadata_wrapper('commerce_line_item', $discount_line_item);
 
-    $workshop_discount_product = commerce_product_load_by_sku('workshop-discount-product');
+      $workshop_discount_product = commerce_product_load_by_sku('workshop-discount-product');
 
-    $discount_line_item_wrapper->line_item_label = t('workshop-discount');
-    $discount_line_item_wrapper->quantity = 1;
-    $discount_line_item_wrapper->commerce_product = $workshop_discount_product->product_id;
-    $discount_line_item_wrapper->commerce_unit_price->amount = $discount_price;
-    $discount_line_item_wrapper->commerce_unit_price->currency_code = 'GBP';
-    $discount_line_item_wrapper->commerce_unit_price->data = commerce_price_component_add(
-      $discount_line_item_wrapper->commerce_unit_price->value(),
-      'base_price',
-      $discount_line_item_wrapper->commerce_unit_price->value(),
-      TRUE,
-      FALSE
-    );
+      $discount_line_item_wrapper->line_item_label = t('workshop-discount');
+      $discount_line_item_wrapper->quantity = 1;
+      $discount_line_item_wrapper->commerce_product = $workshop_discount_product->product_id;
+      $discount_line_item_wrapper->commerce_unit_price->amount = $discount_price;
+      $discount_line_item_wrapper->commerce_unit_price->currency_code = 'GBP';
+      $discount_line_item_wrapper->commerce_unit_price->data = commerce_price_component_add(
+        $discount_line_item_wrapper->commerce_unit_price->value(),
+        'base_price',
+        $discount_line_item_wrapper->commerce_unit_price->value(),
+        TRUE,
+        FALSE
+      );
 
-    commerce_line_item_save($discount_line_item);
-    $order_wrapper->commerce_line_items[] = $discount_line_item;
-    $order_wrapper->save();
+      commerce_line_item_save($discount_line_item);
+      $order_wrapper->commerce_line_items[] = $discount_line_item;
+      $order_wrapper->save();
+    }
   }
 }
