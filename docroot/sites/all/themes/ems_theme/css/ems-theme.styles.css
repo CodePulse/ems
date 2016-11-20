@@ -5688,6 +5688,11 @@ tr.even, tr.odd {
 body {
   font-family: "news-gothic-std", "NewsGothic", "News Cycle", "Calibri", "Arial Narrow", "Geneva", "Helvetica", "Arial";
 }
+nav .menu-name-main-menu ul li a:hover {
+  background: #666;
+  color: #fff;
+
+}
 nav .menu-name-main-menu ul li a {
   border-radius: 4px 4px 4px 4px;
   color: #006C85;

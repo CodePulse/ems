@@ -4,6 +4,7 @@
  * Implements hook_form_alter().
  */
 function ems_custom_form_alter(&$form, &$form_state, $form_id) {
+  $form['commerce_payment']['payment_method']['#options']['payment_commerce_2|commerce_payment_payment_commerce_2'] = t('Invoice By Company');
  // leaving here to debug for form_id.
 }
 

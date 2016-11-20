@@ -96,7 +96,7 @@
 
   <div class="l-main">
     <div class="container l-content" role="main">
-      <?php print $breadcrumb; ?>
+<!--      --><?php //print $breadcrumb; ?>
       <?php print $messages; ?>
       <?php print render($tabs); ?>
       <?php print render($page['content']); ?>
