@@ -4,16 +4,7 @@
  * Implements hook_form_alter().
  */
 function ems_custom_form_alter(&$form, &$form_state, $form_id) {
-  foreach (element_children($form['edit_delete']) as $id) {
-    if (!empty($form['edit_delete'][$id]['#line_item_id'])) {
-      $line_item_id = $form['edit_delete'][$id]['#line_item_id'];
-      $line_item = commerce_line_item_load($line_item_id);
-      if ($line_item->type == 'commerce_webform') {
-        unset($form['edit_delete'][$id]['#submit'][0]);
-        $form['edit_delete'][$id]['#suffix'] = '';
-      }
-    }
-  }
+ // leaving here to debug for form_id.
 }
 
 /**
@@ -48,6 +39,17 @@ function ems_custom_form_views_form_commerce_cart_form_default_alter(&$form, &$f
 
   // There will be no need to update the cart, so lets hide it.
   $form['actions']['submit']['#access'] = FALSE;
+
+  foreach (element_children($form['edit_delete']) as $id) {
+    if (!empty($form['edit_delete'][$id]['#line_item_id'])) {
+      $line_item_id = $form['edit_delete'][$id]['#line_item_id'];
+      $line_item = commerce_line_item_load($line_item_id);
+      if ($line_item->type == 'commerce_webform') {
+        unset($form['edit_delete'][$id]['#submit'][0]);
+        $form['edit_delete'][$id]['#suffix'] = '';
+      }
+    }
+  }
 }
 
 /**
