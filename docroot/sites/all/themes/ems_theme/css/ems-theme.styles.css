@@ -5688,6 +5688,29 @@ tr.even, tr.odd {
 body {
   font-family: "news-gothic-std", "NewsGothic", "News Cycle", "Calibri", "Arial Narrow", "Geneva", "Helvetica", "Arial";
 }
+nav .menu-name-main-menu ul li a {
+  border-radius: 4px 4px 4px 4px;
+  color: #006C85;
+  float: left;
+  margin-right: 5px;
+  padding: 3px;
+  font-size: 17px;
+  font-weight:normal;
+  text-decoration: none;
+}
+nav .menu-name-main-menu ul li {
+  display: inline-block;
+}
+header {
+  padding-top:20px;
+}
+.ems-site-logo.col-md-2{
+  width:11%;
+}
+.ems-slogan.col-md-6,
+.ems-menu.col-md-4{
+  padding-top:40px;
+}
 .commerce_payment.form-wrapper,
 #commerce-checkout-coupon-ajax-wrapper,
 .cart_contents,

@@ -73,7 +73,7 @@
 <div class="l-page">
   <header class="l-header col-md-12" role="banner">
     <div class="container l-branding">
-      <div class="ems-site-logo col-md-4">
+      <div class="ems-site-logo col-md-2">
         <?php if ($logo): ?>
           <a href="<?php print $front_page; ?>"
              title="<?php print t('Home'); ?>" rel="home" class="site-logo"><img
@@ -82,14 +82,12 @@
       </div>
 
       <div class="ems-menu col-md-4">
-        menu placeholder
         <?php print render($page['menu']); ?>
       </div>
 
-      <div class="ems-slogan col-md-4">
-        slogan placeholder
+      <div class="ems-slogan col-md-6">
         <?php if ($site_slogan): ?>
-          <h2 class="site-slogan"><?php print $site_slogan; ?></h2>
+          <?php print $site_slogan; ?>
         <?php endif; ?>
       </div>
 
