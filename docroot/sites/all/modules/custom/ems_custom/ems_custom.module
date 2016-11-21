@@ -5,6 +5,13 @@
  */
 function ems_custom_form_alter(&$form, &$form_state, $form_id) {
   $form['commerce_payment']['payment_method']['#options']['payment_commerce_2|commerce_payment_payment_commerce_2'] = t('Invoice By Company');
+  $form['actions']['submit']['#description'] = t('Please have your credit card details available for the next stage');
+  $form['actions']['#description'] = t('d');
+  $form['basket_description'] = array(
+    '#type' => 'markup',
+    '#markup' => '<div class="basket-description">' . t('Please have your credit card details available for the next stage') . '</div>',
+    '#weight' => 2000,
+  );
  // leaving here to debug for form_id.
 }
 
