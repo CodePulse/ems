@@ -5616,12 +5616,23 @@ label[for="edit-submitted-conference-set-academic-pricing"] {
   width: 200px;
   margin:0;
 }
-
+.commerce_coupon .fieldset-wrapper {
+  position:relative;
+}
 .customer_profile_billing label,
 .commerce_coupon label {
   display: inline-block;
   width: 200px;
   margin:0;
+}
+input#edit-commerce-coupon-coupon-add {
+  position: absolute;
+  top: -15px;
+  right: 200px;
+}
+input#edit-commerce-coupon-coupon-add,
+.commerce_coupon .form-item-commerce-coupon-coupon-code {
+  display:inline-block;
 }
 
 .commerce_coupon input[type="text"],

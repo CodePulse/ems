@@ -4,7 +4,7 @@
  * Implements hook_form_alter().
  */
 function ems_custom_form_alter(&$form, &$form_state, $form_id) {
-  $form['commerce_payment']['payment_method']['#options']['payment_commerce_2|commerce_payment_payment_commerce_2'] = t('Invoice By Company');
+  $form['commerce_payment']['payment_method']['#options']['payment_commerce_2|commerce_payment_payment_commerce_2'] = t('Invoice my company');
   if ($form_id == 'webform_client_form_4') {
     $form['basket_description'] = array(
       '#type' => 'markup',
@@ -22,12 +22,23 @@ function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_st
   $form['buttons']['continue']['#weight'] = 1000;
   $form['buttons']['back']['#weight'] = -1000;
   $form['buttons']['cancel']['#weight'] = -1000;
+
+  $countries = &$form['customer_profile_billing']['commerce_customer_address'][LANGUAGE_NONE][0]['country']['#options'];
+
+  $US = $countries['US'];
+  $GB = $countries['GB'];
+  unset($countries['US']);
+  unset($countries['GB']);
+  array_unshift($countries, $US);
+  array_unshift($countries, $GB);
+
 }
 
 function ems_custom_form_commerce_checkout_form_review_alter(&$form, &$form_state, $form_id) {
   $form['buttons']['continue']['#weight'] = 1000;
   $form['buttons']['back']['#weight'] = -1000;
   $form['buttons']['cancel']['#weight'] = -1000;
+  $form['commerce_payment']['payment_details']['paypal_wps_information']['#markup'] = '';
 }
 
 /**
