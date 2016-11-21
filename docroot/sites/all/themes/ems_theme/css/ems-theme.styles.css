@@ -5765,3 +5765,9 @@ table.checkout-review {
 .basket-description {
   color:#58595B;
 }
+.ems-menu.col-md-5 {
+  width:38%;
+}
+.ems-slogan.col-md-5 {
+  width:49%;
+}

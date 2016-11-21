@@ -81,11 +81,11 @@
         <?php endif; ?>
       </div>
 
-      <div class="ems-menu col-md-4">
+      <div class="ems-menu col-md-5">
         <?php print render($page['menu']); ?>
       </div>
 
-      <div class="ems-slogan col-md-6">
+      <div class="ems-slogan col-md-5">
         <?php if ($site_slogan): ?>
           <?php print $site_slogan; ?>
         <?php endif; ?>
