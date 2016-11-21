@@ -98,6 +98,10 @@
       $('.webform-component--conference-set--academic-pricing .description').prependTo('#edit-submitted-conference-set-academic-pricing-0');
       $('.webform-component--conference-set--academic-workshops .description').prependTo('#edit-submitted-conference-set-academic-workshops-0');
       $('.webform-component--conference-set--industrial-workshops .description').prependTo('#edit-submitted-conference-set-industrial-workshops-0');
+      $('.webform-component--conference-set--academic-workshops-am .description').prependTo('#edit-submitted-conference-set-academic-workshops-am-0');
+      $('.webform-component--conference-set--academic-workshops-pm .description').prependTo('#edit-submitted-conference-set-academic-workshops-pm-0');
+      $('.webform-component--conference-set--industrial-workshops-am .description').prependTo('#edit-submitted-conference-set-industrial-workshops-am-0');
+      $('.webform-component--conference-set--industrial-workshops-pm .description').prependTo('#edit-submitted-conference-set-industrial-workshops-pm-0');
     }
   }
 

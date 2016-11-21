@@ -5577,6 +5577,10 @@ body {
   margin-bottom:0;
 }
 
+.webform-component--conference-set--academic-workshops-am .description,
+.webform-component--conference-set--academic-workshops-pm .description,
+.webform-component--conference-set--industrial-workshops-am .description,
+.webform-component--conference-set--industrial-workshops-pm .description,
 .webform-component--conference-set--academic-workshops .description,
 .webform-component--conference-set--industrial-workshops .description,
 .webform-component--conference-set--full-conference  .description,
@@ -5587,6 +5591,10 @@ body {
   margin-bottom: 10px;
 }
 
+label[for="edit-submitted-conference-set-industrial-workshops-am"],
+label[for="edit-submitted-conference-set-industrial-workshops-pm"],
+label[for="edit-submitted-conference-set-academic-workshops-am"],
+label[for="edit-submitted-conference-set-academic-workshops-pm"],
 label[for="edit-submitted-conference-set-industrial-workshops"],
 label[for="edit-submitted-conference-set-full-conference"],
 label[for="edit-submitted-conference-set-academic-workshops"],
