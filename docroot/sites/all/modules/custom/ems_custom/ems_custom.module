@@ -24,13 +24,14 @@ function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_st
   $form['buttons']['cancel']['#weight'] = -1000;
 
   $countries = &$form['customer_profile_billing']['commerce_customer_address'][LANGUAGE_NONE][0]['country']['#options'];
+  $form['customer_profile_billing']['commerce_customer_address']['und'][0]['locality_block']['locality']['#title'] = t('City');
 
-  $US = $countries['US'];
-  $GB = $countries['GB'];
-  unset($countries['US']);
-  unset($countries['GB']);
-  array_unshift($countries, $US);
-  array_unshift($countries, $GB);
+//  $US = $countries['US'];
+//  $GB = $countries['GB'];
+//  unset($countries['US']);
+//  unset($countries['GB']);
+//  array_unshift($countries, $US);
+//  array_unshift($countries, $GB);
 }
 
 function ems_custom_form_commerce_checkout_form_review_alter(&$form, &$form_state, $form_id) {
@@ -183,6 +184,4 @@ function ems_custom_form_webform_results_download_form_alter(&$form, &$form_stat
   for ($i = 0; $i <= 9; $i++) {
     unset($form['components']['#default_value'][$i]);
   }
-
-  $f='d';
 }

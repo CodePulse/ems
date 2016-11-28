@@ -3252,7 +3252,7 @@ input:focus + .form-toggle__label:before,
 
 /* line 2337, ../sass/components/_ems_bootstrap.scss */
 .header .navigation__subnav .container {
-  width: auto !important;
+  /*width: auto !important;*/
   max-width: 1170px; }
 
 /* line 2340, ../sass/components/_ems_bootstrap.scss */
@@ -5505,11 +5505,12 @@ body {
 
 /* line 6, ../sass/components/_main_components.scss */
 .container {
-  width: 1024px; }
+  /*width: 1170px; */
+}
 
 /* line 9, ../sass/components/_main_components.scss */
 .l-content {
-  background: url("../images/bg.jpg") #ecedf0 no-repeat;
+  background: url("../images/bg.jpg") #ecedf0 no-repeat 0 0/100%;
   margin: 0 auto 10px;
   box-shadow: 0px 0px 10px #000; }
 
@@ -5627,17 +5628,20 @@ label[for="edit-submitted-conference-set-academic-pricing"] {
   margin:0;
 }
 input#edit-commerce-coupon-coupon-add {
-  position: absolute;
-  top: -15px;
-  right: 200px;
+  /*position: absolute;*/
+  /*top: -15px;*/
+  /*right: 200px;*/
+  margin:0 0 0 10px !important;
 }
 input#edit-commerce-coupon-coupon-add,
 .commerce_coupon .form-item-commerce-coupon-coupon-code {
-  display:inline-block;
+  /*display:inline-block;*/
+  float:left;
 }
 
 .commerce_coupon input[type="text"],
-.customer_profile_billing input[type="text"] {
+.customer_profile_billing input[type="text"],
+.customer_profile_billing select {
   width: 400px;
   height: 34px;
   padding: 6px 12px;
@@ -5826,9 +5830,26 @@ body {
   background-color: #f9f9f9;
 }
 
+.page-checkout .commerce-price-formatted-components>tbody>tr:nth-child(odd)>td, .commerce-price-formatted-components>tbody>tr:nth-child(odd)>th {
+  background-color: #bcbfbf;
+}
+
 .commerce-price-formatted-components>tbody>tr>td {
   padding: 8px;
 }
 .webform-client-form fieldset {
   border-bottom:1px solid #ccc;
+  margin-bottom: 30px;
+}
+
+.ems-slogan {
+  float:right;
+}
+
+.ems-menu,
+.ems-slogan {
+  padding-top:40px;
+}
+.inner-padding {
+  padding: 0 30px;
 }

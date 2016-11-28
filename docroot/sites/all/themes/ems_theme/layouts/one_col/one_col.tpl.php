@@ -98,10 +98,12 @@
 
   <div class="l-main">
     <div class="container l-content" role="main">
-<!--      --><?php //print $breadcrumb; ?>
-      <?php print $messages; ?>
-      <?php print render($tabs); ?>
-      <?php print render($page['content']); ?>
+      <div class="inner-padding">
+        <?php print $messages; ?>
+        <?php print render($tabs); ?>
+        <?php print render($page['content']); ?>
+      </div>
+
     </div>
   </div>
 
