@@ -5509,7 +5509,7 @@ body {
 
 /* line 9, ../sass/components/_main_components.scss */
 .l-content {
-  background: url("../images/bg.jpg");
+  background: url("../images/bg.jpg") #ecedf0 no-repeat;
   margin: 0 auto 10px;
   box-shadow: 0px 0px 10px #000; }
 
@@ -5566,6 +5566,7 @@ body {
   color: #00add8;
   font-weight: bold;
   text-decoration: none;
+  font-size:1.3em;
 }
 .form-item .description, .form-actions .description {
   font-size: 12px;

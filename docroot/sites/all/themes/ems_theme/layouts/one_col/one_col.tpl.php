@@ -87,7 +87,9 @@
 
       <div class="ems-slogan col-md-3">
         <?php if ($site_slogan): ?>
-          <?php print $site_slogan; ?>
+          <span>
+            <?php print t('The power to be certain'); ?>
+          </span>
         <?php endif; ?>
       </div>
 
