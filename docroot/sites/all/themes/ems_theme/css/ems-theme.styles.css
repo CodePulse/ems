@@ -5828,3 +5828,6 @@ body {
 .commerce-price-formatted-components>tbody>tr>td {
   padding: 8px;
 }
+.webform-client-form fieldset {
+  border-bottom:1px solid #ccc;
+}

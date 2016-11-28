@@ -31,7 +31,6 @@ function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_st
   unset($countries['GB']);
   array_unshift($countries, $US);
   array_unshift($countries, $GB);
-
 }
 
 function ems_custom_form_commerce_checkout_form_review_alter(&$form, &$form_state, $form_id) {
@@ -174,4 +173,16 @@ function ems_custom_commerce_cart_order_refresh($order_wrapper) {
       $order_wrapper->save();
     }
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ems_custom_form_webform_results_download_form_alter(&$form, &$form_state, $form_id) {
+  $form['select_options']['select_format']['#default_value'] = 'compact';
+  for ($i = 0; $i <= 9; $i++) {
+    unset($form['components']['#default_value'][$i]);
+  }
+
+  $f='d';
 }

@@ -75,17 +75,17 @@
     <div class="container l-branding">
       <div class="ems-site-logo col-md-2">
         <?php if ($logo): ?>
-          <a href="<?php print $front_page; ?>"
+          <a href="https://www.psenterprise.com/"
              title="<?php print t('Home'); ?>" rel="home" class="site-logo"><img
               src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/></a>
         <?php endif; ?>
       </div>
 
-      <div class="ems-menu col-md-5">
+      <div class="ems-menu col-md-7">
         <?php print render($page['menu']); ?>
       </div>
 
-      <div class="ems-slogan col-md-5">
+      <div class="ems-slogan col-md-3">
         <?php if ($site_slogan): ?>
           <?php print $site_slogan; ?>
         <?php endif; ?>
