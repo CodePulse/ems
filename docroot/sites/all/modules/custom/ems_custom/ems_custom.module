@@ -185,3 +185,14 @@ function ems_custom_form_webform_results_download_form_alter(&$form, &$form_stat
     unset($form['components']['#default_value'][$i]);
   }
 }
+
+//todo send email to user after submitting checkout
+///**
+// * Implements hook_commerce_order_presave().
+// */
+//function zsl_custom_commerce_checkout_complete($order) {
+//  $params = _zsl_custom_order_details(array($order));
+//  $params['current_order']->order_number = commerce_billy_invoice_nr_infinite();
+//
+//  drupal_mail('zsl_custom', 'order_confirmation', $order->mail, language_default(), $params);
+//}
