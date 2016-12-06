@@ -71,9 +71,9 @@
  */
 ?>
 <div class="l-page">
-  <header class="l-header col-md-12" role="banner">
+  <header class="l-header col-md-12 col-xs-12">
     <div class="container l-branding">
-      <div class="ems-site-logo col-md-2">
+      <div class="ems-site-logo col-md-2 col-xs-12">
         <?php if ($logo): ?>
           <a href="https://www.psenterprise.com/"
              title="<?php print t('Home'); ?>" rel="home" class="site-logo"><img
@@ -81,11 +81,12 @@
         <?php endif; ?>
       </div>
 
-      <div class="ems-menu col-md-7">
+      <div class="ems-menu col-md-7 col-xs-12">
         <?php print render($page['menu']); ?>
+        <?php print $messages; ?>
       </div>
 
-      <div class="ems-slogan col-md-3">
+      <div class="ems-slogan col-md-3 col-xs-12">
         <?php if ($site_slogan): ?>
           <span>
             <?php print t('The power to be certain'); ?>
@@ -99,7 +100,6 @@
   <div class="l-main">
     <div class="container l-content" role="main">
       <div class="inner-padding">
-        <?php print $messages; ?>
         <?php print render($tabs); ?>
         <?php print render($page['content']); ?>
       </div>

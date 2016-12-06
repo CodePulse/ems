@@ -32,6 +32,8 @@ function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_st
 //  unset($countries['GB']);
 //  array_unshift($countries, $US);
 //  array_unshift($countries, $GB);
+
+  $form['commerce_coupon']['coupon_code']['#description'] = '';
 }
 
 function ems_custom_form_commerce_checkout_form_review_alter(&$form, &$form_state, $form_id) {
