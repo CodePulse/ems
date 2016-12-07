@@ -101,6 +101,7 @@
     <div class="container l-content" role="main">
       <div class="inner-padding">
         <?php print render($tabs); ?>
+<!--        --><?php //print $title; ?>
         <?php print render($page['content']); ?>
       </div>
 

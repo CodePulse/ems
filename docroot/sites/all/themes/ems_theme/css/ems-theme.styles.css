@@ -5631,6 +5631,7 @@ label[for="edit-submitted-conference-set-academic-pricing"] {
 .commerce_coupon .fieldset-wrapper {
   position:relative;
 }
+.account.form-wrapper label,
 .customer_profile_billing label,
 .commerce_coupon label {
   display: inline-block;
@@ -5648,7 +5649,12 @@ input#edit-commerce-coupon-coupon-add,
   /*display:inline-block;*/
   float:left;
 }
-
+.checkout-help {
+  font-weight:700;
+  font-size:1.3333rem;
+  margin-bottom: 20px;
+}
+.account.form-wrapper input[type="text"],
 .commerce_coupon input[type="text"],
 .customer_profile_billing input[type="text"],
 .customer_profile_billing select {
@@ -5783,6 +5789,16 @@ header {
 .ems-menu.col-md-4{
   padding-top:40px;
 }
+.pane-data {
+  background: #ccc !important;
+  padding: 20px;
+  margin-bottom:20px;
+}
+table.checkout-review {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
 .account.form-wrapper,
 .commerce_payment.form-wrapper,
 #commerce-checkout-coupon-ajax-wrapper,
@@ -5791,6 +5807,12 @@ header {
   background: #ccc;
   padding: 20px;
   margin-bottom:20px;
+}
+.pane-title {
+  font-size: 18px;
+}
+table.checkout-review label {
+  margin:0;
 }
 .commerce-checkout-form-review fieldset legend,
 .commerce-checkout-form-checkout fieldset legend {
@@ -5809,7 +5831,7 @@ header {
   background-image: -moz-linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
   background-image: linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
   color: #006c85;
-  margin-top: 0;
+  margin-right: 50px;
 }
 table.checkout-review {
   width:100%;

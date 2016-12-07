@@ -198,3 +198,7 @@ function ems_custom_form_webform_results_download_form_alter(&$form, &$form_stat
 //
 //  drupal_mail('zsl_custom', 'order_confirmation', $order->mail, language_default(), $params);
 //}
+
+function ems_custom_commerce_checkout_page_info_alter(&$checkout_pages) {
+  $checkout_pages['review']['help'] = t('<h2>Review your order</h2>');
+}
