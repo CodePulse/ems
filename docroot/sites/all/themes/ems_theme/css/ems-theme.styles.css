@@ -5620,11 +5620,11 @@ label[for="edit-submitted-conference-set-academic-pricing"] {
   vertical-align: top;
 }
 
-.description-input {
+.webform-component--additional-information-set .description-input {
   display: inline-block;
   width: 650px;
 }
-.description-input .description{
+.webform-component--additional-information-set .description-input .description{
   display: block;
   width: 450px;
 }
@@ -5681,7 +5681,7 @@ input.form-submit:hover {
   background-image: -moz-linear-gradient(center bottom , #043B47 14%, #006D85 57%);
 
 }
-input.form-submit {
+input.form-submdit {
   background-color: #ccc;
   background-image: -moz-linear-gradient(center bottom, #A4A4A6 21%, #E0DDE0 61%);
   border: 0 none;
@@ -5728,7 +5728,7 @@ tr.even, tr.odd {
   -o-user-select: none;
   user-select: none;
 }
-
+input.form-submit,
 .checkout-continue,
 #commerce-checkout-coupon-ajax-wrapper .form-submit,
 .view-commerce-cart-form #edit-checkout {
@@ -5751,6 +5751,18 @@ tr.even, tr.odd {
   border: 0 none;
   text-transform: none;
   font-weight: normal;
+}
+.checkout-continue:hover,
+#commerce-checkout-coupon-ajax-wrapper .form-submit:hover,
+.view-commerce-cart-form #edit-checkout:hover,
+input.form-submit:hover {
+  background-color: #ccc;
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.21, rgb(164,164,166)),color-stop(0.61, rgb(224,221,224)));
+  background-image: -webkit-linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
+  background-image: -o-linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
+  background-image: -moz-linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
+  background-image: linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
+  color: #006c85 !important;
 }
 body {
   font-family: "news-gothic-std", "NewsGothic", "News Cycle", "Calibri", "Arial Narrow", "Geneva", "Helvetica", "Arial";
@@ -5880,7 +5892,7 @@ body {
 
 .ems-menu,
 .ems-slogan {
-  padding-top:40px;
+  padding-top:42px;
 }
 .inner-padding {
   padding: 0 30px;

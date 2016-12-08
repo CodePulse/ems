@@ -25,3 +25,14 @@ function ems_theme_webform_element($variables) {
 
   return $output;
 }
+
+function ems_theme_theme() {
+  return array(
+    'ems_custom_checkout_review_form' => array(
+      'template' =>  '/templates/ems-commerce/forms/review-page',
+      'arguments' => array('form' => NULL),
+      'render element' => 'form'
+    ),
+  );
+}
+

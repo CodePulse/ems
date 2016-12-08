@@ -12,7 +12,7 @@ function ems_custom_form_alter(&$form, &$form_state, $form_id) {
       '#weight' => 2000,
     );
   }
- // leaving here to debug for form_id.
+  // leaving here to debug for form_id.
 }
 
 /**
@@ -37,6 +37,7 @@ function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_st
 }
 
 function ems_custom_form_commerce_checkout_form_review_alter(&$form, &$form_state, $form_id) {
+  $form['#theme'][] = 'ems_custom_checkout_review_form';
   $form['buttons']['continue']['#weight'] = 1000;
   $form['buttons']['back']['#weight'] = -1000;
   $form['buttons']['cancel']['#weight'] = -1000;
