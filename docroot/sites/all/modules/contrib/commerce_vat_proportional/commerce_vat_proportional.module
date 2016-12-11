@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * Add proportional VAT (with respect to all other line items of an order) to a line item.
+ *
+ * We rely on price components named in vat standard "vat|RATE_NAME|RATE_START
+ *
+ * @param EntityDrupalWrapper $line_item_wrapper
+ */
+function commerce_vat_proportional_apply(EntityDrupalWrapper $line_item_wrapper) {
+  $line_item_list_wrapper = $line_item_wrapper->order->commerce_line_items;
+  list($total_amounts_per_vat_rate, $total_amount) = commerce_vat_proportional_get_amounts($line_item_list_wrapper);
+  commerce_vat_proportional_apply_by_amounts($line_item_wrapper, $total_amounts_per_vat_rate, $total_amount);
+}
+
+/**
+ * Get line tiem total amounts by vat rate.
+ *
+ * @param EntityListWrapper $line_item_list_wrapper
+ *   The order line item list wrapper.
+ * @return array[string]int
+ *   Amounts by VAT rate.
+ */
+function commerce_vat_proportional_get_amounts(EntityListWrapper $line_item_list_wrapper) {
+  $total_amount = 0;
+  $total_amounts_per_vat_rate = array();
+  foreach ($line_item_list_wrapper as $current_line_item_wrapper) {
+    // Sometimes we get NULL discount items.
+    if (!$current_line_item_wrapper->value()) {
+      continue;
+    }
+    $current_price_data = $current_line_item_wrapper->commerce_total->data->value();
+    foreach ($current_price_data['components'] as $component) {
+      $component_name = $component['name'];
+      $component_name_parts = explode('|', $component_name);
+      if ($component_name_parts[0] === 'vat') {
+        $vat_rate_name = $component_name_parts[1];
+        $total_amounts_per_vat_rate += array($vat_rate_name => 0);
+        // Calculate back from VAT amount to corresponding net amount.
+        $vat_rate_base = $component['price']['amount'] / $component['price']['data']['vat_rate_info']['rate'];
+        $total_amounts_per_vat_rate[$vat_rate_name] += $vat_rate_base;
+        $total_amount += $vat_rate_base;
+      }
+    }
+  }
+  return array($total_amounts_per_vat_rate, $total_amount);
+}
+
+/**
+ * @param EntityDrupalWrapper $line_item_wrapper
+ * @param $total_amounts_per_vat_rate
+ * @param $total_amount
+ */
+function commerce_vat_proportional_apply_by_amounts(EntityDrupalWrapper $line_item_wrapper, $total_amounts_per_vat_rate, $total_amount) {
+  $line_item = $line_item_wrapper->value();
+  // Beware: commerce_total_amount is NOT set here.
+  $line_item_amount = $line_item_wrapper->commerce_unit_price->amount->value() * $line_item_wrapper->quantity->value();
+  foreach ($total_amounts_per_vat_rate as $vat_rate_name => $vat_rate_amount) {
+    $vat_rate = commerce_vat_rate_load($vat_rate_name);
+    if ($total_amount == 0) {
+      $line_item_vat_rate_amount = 0;
+    }
+    else {
+      // This is the proportionality line this module is all about.
+      $line_item_vat_rate_amount = $vat_rate_amount / $total_amount * $line_item_amount;
+    }
+    commerce_vat_rate_apply($vat_rate, $line_item, $line_item_vat_rate_amount);
+  }
+  // Notify the wrapper's cache about the updated value.
+  $line_item_wrapper->set($line_item);
+}
+

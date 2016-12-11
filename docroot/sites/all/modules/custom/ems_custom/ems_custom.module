@@ -23,17 +23,10 @@ function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_st
   $form['buttons']['back']['#weight'] = -1000;
   $form['buttons']['cancel']['#weight'] = -1000;
 
-  $countries = &$form['customer_profile_billing']['commerce_customer_address'][LANGUAGE_NONE][0]['country']['#options'];
   $form['customer_profile_billing']['commerce_customer_address']['und'][0]['locality_block']['locality']['#title'] = t('City');
 
-//  $US = $countries['US'];
-//  $GB = $countries['GB'];
-//  unset($countries['US']);
-//  unset($countries['GB']);
-//  array_unshift($countries, $US);
-//  array_unshift($countries, $GB);
-
   $form['commerce_coupon']['coupon_code']['#description'] = '';
+  unset($form['commerce_coupon']['coupon_add']['#ajax']);
 }
 
 function ems_custom_form_commerce_checkout_form_review_alter(&$form, &$form_state, $form_id) {
@@ -202,4 +195,19 @@ function ems_custom_form_webform_results_download_form_alter(&$form, &$form_stat
 
 function ems_custom_commerce_checkout_page_info_alter(&$checkout_pages) {
   $checkout_pages['review']['help'] = t('<h2>Review your order</h2>');
+}
+
+function ems_custom_commerce_price_formatted_components_alter(&$components, $price, $entity) {
+  $order_wrapper = entity_metadata_wrapper('commerce_order', $entity);
+  $line_items = $order_wrapper->commerce_line_items->value();
+  $line_items_total = commerce_line_items_total($line_items);
+  $subtotal_excl_vat = $line_items_total['amount'] - $components['tax|vat']['price']['amount'];
+  $components['base_price']['price']['amount'] = $subtotal_excl_vat;
+}
+
+function ems_custom_commerce_price_component_type_info_alter(&$component_types) {
+  $component_types['discount']['weight'] = 100;
+  $component_types['base_price']['weight'] = 90;
+  $component_types['tax|vat']['weight'] = 1000;
+  $f='f';
 }

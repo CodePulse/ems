@@ -1,0 +1,11 @@
+name = Commerce VAT Proportional
+description = Provides the ability to add proportional VAT (with respect to all other line items of an order) to a line item.
+package = Commerce (Tax)
+core = 7.x
+
+; Information added by Drupal.org packaging script on 2016-09-14
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "commerce_vat_proportional"
+datestamp = "1473820140"
+

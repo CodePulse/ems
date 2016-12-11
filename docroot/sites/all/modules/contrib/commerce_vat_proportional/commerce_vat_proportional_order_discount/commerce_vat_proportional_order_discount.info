@@ -1,0 +1,17 @@
+name = Commerce proportional VAT on order discount
+core = 7.x
+package = Commerce (Tax)
+dependencies[] = commerce_discount
+dependencies[] = commerce_vat_proportional
+dependencies[] = entity
+dependencies[] = rules
+features[features_api][] = api:2
+features[rules_config][] = rules_commerce_vat_proportional_order_discount
+mtime = 1411406197
+
+; Information added by Drupal.org packaging script on 2016-09-14
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "commerce_vat_proportional"
+datestamp = "1473820140"
+
