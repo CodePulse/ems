@@ -125,7 +125,7 @@ function ems_commerce_product_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -168,7 +168,7 @@ function ems_commerce_product_field_default_field_instances() {
         'display_label' => TRUE,
       ),
       'type' => 'options_onoff',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -210,7 +210,7 @@ function ems_commerce_product_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -228,10 +228,10 @@ function ems_commerce_product_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 3,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 5,
       ),
       'line_item' => array(
         'label' => 'above',
@@ -243,7 +243,7 @@ function ems_commerce_product_field_default_field_instances() {
     'entity_type' => 'commerce_product',
     'field_name' => 'field_workshop_type',
     'label' => 'Workshop type',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -251,8 +251,8 @@ function ems_commerce_product_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 5,
+      'type' => 'options_select',
+      'weight' => 4,
     ),
   );
 

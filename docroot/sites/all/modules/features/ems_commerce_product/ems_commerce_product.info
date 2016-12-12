@@ -24,3 +24,4 @@ features[field_instance][] = commerce_product-product-commerce_stock_override
 features[field_instance][] = commerce_product-product-field_product_type
 features[field_instance][] = commerce_product-product-field_workshop_type
 features[taxonomy][] = product_flag
+features[taxonomy][] = workshop_type

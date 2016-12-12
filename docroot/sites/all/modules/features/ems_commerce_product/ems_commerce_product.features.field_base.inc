@@ -114,21 +114,22 @@ function ems_commerce_product_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_workshop_type',
     'indexes' => array(
-      'value' => array(
-        0 => 'value',
+      'tid' => array(
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
-    'module' => 'list',
+    'module' => 'taxonomy',
     'settings' => array(
       'allowed_values' => array(
-        'Industrial' => 'Industrial',
-        'Academic' => 'Academic',
+        0 => array(
+          'vocabulary' => 'workshop_type',
+          'parent' => 0,
+        ),
       ),
-      'allowed_values_function' => '',
     ),
     'translatable' => 0,
-    'type' => 'list_text',
+    'type' => 'taxonomy_term_reference',
   );
 
   return $field_bases;
