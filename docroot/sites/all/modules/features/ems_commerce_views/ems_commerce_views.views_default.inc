@@ -318,29 +318,6 @@ function ems_commerce_views_views_default_views() {
   $handler->display->display_options['fields']['line_item_title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['line_item_title']['alter']['path'] = '[commerce_display_path]';
   /* Field: Commerce Line item: Unit price */
-  $handler->display->display_options['fields']['commerce_unit_price_1']['id'] = 'commerce_unit_price_1';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['table'] = 'field_data_commerce_unit_price';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['field'] = 'commerce_unit_price';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['relationship'] = 'commerce_line_items_line_item_id';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['label'] = 'VAT';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['click_sort_column'] = 'amount';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['type'] = 'commerce_price_components';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['settings'] = array(
-    'commerce_price_components' => array(
-      'commerce_coupon_fixed_10_pounds_off' => 0,
-      'commerce_coupon_fixed_prereg_full' => 0,
-      'commerce_coupon_fixed_presenter_seb' => 0,
-      'commerce_coupon_fixed_presenter_eb' => 0,
-      'commerce_coupon_fixed_presenter_full' => 0,
-      'commerce_coupon_fixed_prereg_seb' => 0,
-      'commerce_coupon_fixed_prereg_eb' => 0,
-      'base_price' => 0,
-      'discount' => 0,
-      'fee' => 0,
-      'tax|vat' => 1,
-    ),
-  );
-  /* Field: Commerce Line item: Unit price */
   $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
@@ -362,6 +339,29 @@ function ems_commerce_views_views_default_views() {
       'discount' => 0,
       'fee' => 0,
       'tax|vat' => 0,
+    ),
+  );
+  /* Field: Commerce Line item: Unit price */
+  $handler->display->display_options['fields']['commerce_unit_price_1']['id'] = 'commerce_unit_price_1';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['table'] = 'field_data_commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['field'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['label'] = 'VAT';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['type'] = 'commerce_price_components';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['settings'] = array(
+    'commerce_price_components' => array(
+      'commerce_coupon_fixed_10_pounds_off' => 0,
+      'commerce_coupon_fixed_prereg_full' => 0,
+      'commerce_coupon_fixed_presenter_seb' => 0,
+      'commerce_coupon_fixed_presenter_eb' => 0,
+      'commerce_coupon_fixed_presenter_full' => 0,
+      'commerce_coupon_fixed_prereg_seb' => 0,
+      'commerce_coupon_fixed_prereg_eb' => 0,
+      'base_price' => 0,
+      'discount' => 0,
+      'fee' => 0,
+      'tax|vat' => 1,
     ),
   );
   /* Field: Commerce Line Item: Quantity text field */
@@ -483,22 +483,6 @@ function ems_commerce_views_views_default_views() {
   $handler->display->display_options['fields']['quantity']['relationship'] = 'commerce_line_items_line_item_id';
   $handler->display->display_options['fields']['quantity']['precision'] = '0';
   /* Field: Commerce Line item: Unit price */
-  $handler->display->display_options['fields']['commerce_unit_price_1']['id'] = 'commerce_unit_price_1';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['table'] = 'field_data_commerce_unit_price';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['field'] = 'commerce_unit_price';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['relationship'] = 'commerce_line_items_line_item_id';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['label'] = 'VAT';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['click_sort_column'] = 'amount';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['type'] = 'commerce_price_components';
-  $handler->display->display_options['fields']['commerce_unit_price_1']['settings'] = array(
-    'commerce_price_components' => array(
-      'base_price' => 0,
-      'discount' => 0,
-      'fee' => 0,
-      'tax|vat' => 1,
-    ),
-  );
-  /* Field: Commerce Line item: Unit price */
   $handler->display->display_options['fields']['commerce_unit_price']['id'] = 'commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['table'] = 'field_data_commerce_unit_price';
   $handler->display->display_options['fields']['commerce_unit_price']['field'] = 'commerce_unit_price';
@@ -513,6 +497,22 @@ function ems_commerce_views_views_default_views() {
       'discount' => 0,
       'fee' => 0,
       'tax|vat' => 0,
+    ),
+  );
+  /* Field: Commerce Line item: Unit price */
+  $handler->display->display_options['fields']['commerce_unit_price_1']['id'] = 'commerce_unit_price_1';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['table'] = 'field_data_commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['field'] = 'commerce_unit_price';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['relationship'] = 'commerce_line_items_line_item_id';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['label'] = 'VAT';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['click_sort_column'] = 'amount';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['type'] = 'commerce_price_components';
+  $handler->display->display_options['fields']['commerce_unit_price_1']['settings'] = array(
+    'commerce_price_components' => array(
+      'base_price' => 0,
+      'discount' => 0,
+      'fee' => 0,
+      'tax|vat' => 1,
     ),
   );
   /* Field: Commerce Line item: Total */

@@ -26,7 +26,7 @@ function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_st
   $form['customer_profile_billing']['commerce_customer_address']['und'][0]['locality_block']['locality']['#title'] = t('City');
 
   $form['commerce_coupon']['coupon_code']['#description'] = '';
-  unset($form['commerce_coupon']['coupon_add']['#ajax']);
+//  unset($form['commerce_coupon']['coupon_add']['#ajax']);
 }
 
 function ems_custom_form_commerce_checkout_form_review_alter(&$form, &$form_state, $form_id) {
@@ -209,7 +209,6 @@ function ems_custom_commerce_price_component_type_info_alter(&$component_types) 
   $component_types['base_price']['weight'] = -100;
   $component_types['discount']['weight'] = 90;
   $component_types['tax|vat']['weight'] = 1000;
-  $f='f';
 }
 
 function ems_custom_inline_conditions_info() {
@@ -222,9 +221,7 @@ function ems_custom_inline_conditions_info() {
       'build' => 'ems_custom_line_item_has_specific_quantity_attributes_build',
     ),
   );
-
-
-//  return $conditions;
+  return $conditions;
 }
 
 function ems_custom_line_item_has_specific_quantity_attributes_configure($settings){

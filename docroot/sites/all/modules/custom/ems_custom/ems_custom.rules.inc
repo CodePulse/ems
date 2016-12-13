@@ -39,5 +39,5 @@ function ems_custom_rules_condition_info() {
     );
   }
 
-  return $conditions;
+//  return $conditions;
 }
