@@ -211,3 +211,70 @@ function ems_custom_commerce_price_component_type_info_alter(&$component_types) 
   $component_types['tax|vat']['weight'] = 1000;
   $f='f';
 }
+
+function ems_custom_inline_conditions_info() {
+  // Products and quantity: line item
+  $conditions['commerce_discount_line_item_has_attributes_quantity'] = array(
+    'label' => t('Product has quantity of attributes'),
+    'entity type' => 'commerce_line_item',
+    'callbacks' => array(
+      'configure' => 'ems_custom_line_item_has_specific_quantity_attributes_configure',
+      'build' => 'ems_custom_line_item_has_specific_quantity_attributes_build',
+    ),
+  );
+
+
+//  return $conditions;
+}
+
+function ems_custom_line_item_has_specific_quantity_attributes_configure($settings){
+  $form = array();
+  $form['operator'] = array(
+    '#type' => 'select',
+    '#title' => t('Operator'),
+    '#title_display' => 'invisible',
+    '#options' => array(
+      '==' => t('quantity equals'),
+    ),
+    '#default_value' => !empty($settings['operator']) ? $settings['operator'] : '==',
+  );
+
+  $form['quantity'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Quantity'),
+    '#title_display' => 'invisible',
+    '#default_value' => !empty($settings['quantity']) ? $settings['quantity'] : '',
+    '#size' => 5,
+    '#required' => TRUE,
+    '#element_validate' => array('element_validate_integer'),
+    '#suffix' => '<div class="condition-instructions">' . t("The discount is active if the order's product(s) match the condition above.") . '</div>',
+  );
+
+  return $form;
+}
+
+function ems_custom_line_item_has_specific_quantity_attributes_build($line_item_wrapper, $products, $operator, $quantity) {
+//  $products_sku = explode(', ', (string) $products);
+//
+//  // specified in the rule settings.
+//  $attribute = array();
+//  foreach ($line_item_wrapper->order->commerce_line_items as $wrapper_line_item) {
+//    $product = $wrapper_line_item->commerce_product->value();
+//    $sku = $wrapper_line_item->commerce_product->sku->value();
+//    // At this point, we are sure that the current product is in the order.
+//    // If this product line item doesn't meet the quantity comparison, the
+//    // condition will return false.
+//    switch ($operator) {
+//      case '==':
+//        if ($wrapper_line_item->quantity->value() == $quantity) {
+//          unset($products_sku[$sku]);
+//        }
+//        else {
+//          return FALSE;
+//        }
+//        break;
+//    }
+//  }
+//  return empty($products_sku);
+
+}

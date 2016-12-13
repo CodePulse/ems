@@ -280,6 +280,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'edit any commerce_coupon entity',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_coupon',
   );
@@ -289,6 +290,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'edit any commerce_coupon entity of bundle discount_coupon',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_coupon',
   );
@@ -352,6 +354,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'edit own commerce_coupon entities',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_coupon',
   );
@@ -361,6 +364,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'edit own commerce_coupon entities of bundle discount_coupon',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_coupon',
   );
@@ -594,6 +598,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'commerce_coupon',
   );
@@ -604,6 +609,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'commerce_coupon',
   );
@@ -633,6 +639,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'commerce_coupon',
   );
@@ -696,6 +703,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'commerce_coupon',
   );
@@ -706,6 +714,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'commerce_coupon',
   );
