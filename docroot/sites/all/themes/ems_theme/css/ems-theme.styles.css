@@ -432,18 +432,49 @@ th {
 .container:after {
   clear: both; }
 
+input[type='text'] {
+  width:100%;
+}
+.account.form-wrapper input[type="text"],
+.commerce_coupon input[type="text"],
+.customer_profile_billing input[type="text"],
+.customer_profile_billing select {
+  width:100%;
+}
 @media (min-width: 768px) {
   /* line 383, ../sass/components/_ems_bootstrap.scss */
   .container {
-    width: 750px; } }
+    width: 750px; }
+  .webform-component--additional-information-set .description-input {
+    display: inline-block;
+    width: 650px;
+  }
+  .webform-component--additional-information-set .description-input .description{
+    display: block;
+    width: 450px;
+  }
+  input[type='text'] {
+    width:450px;
+    display:inline-block;
+  }
+  .account.form-wrapper input[type="text"],
+  .commerce_coupon input[type="text"],
+  .customer_profile_billing input[type="text"],
+  .customer_profile_billing select {
+    width:420px;
+  }
+
+}
 @media (min-width: 992px) {
   /* line 386, ../sass/components/_ems_bootstrap.scss */
   .container {
-    width: 970px; } }
+    width: 970px; }
+}
 @media (min-width: 1200px) {
   /* line 389, ../sass/components/_ems_bootstrap.scss */
   .container {
-    width: 1170px; } }
+    width: 1170px; }
+}
 /* line 392, ../sass/components/_ems_bootstrap.scss */
 .container-fluid {
   margin-right: auto;
@@ -5620,14 +5651,6 @@ label[for="edit-submitted-conference-set-academic-pricing"] {
   vertical-align: top;
 }
 
-.webform-component--additional-information-set .description-input {
-  display: inline-block;
-  width: 650px;
-}
-.webform-component--additional-information-set .description-input .description{
-  display: block;
-  width: 450px;
-}
 .commerce_coupon .fieldset-wrapper {
   position:relative;
 }

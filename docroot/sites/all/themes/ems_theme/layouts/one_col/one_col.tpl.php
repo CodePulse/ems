@@ -70,7 +70,7 @@
  * @see omega_preprocess_page()
  */
 ?>
-<div class="l-page">
+<div class="l-page col-xs-12">
   <header class="l-header col-md-12 col-xs-12">
     <div class="container l-branding">
       <div class="ems-site-logo col-md-2 col-xs-12">
