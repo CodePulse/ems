@@ -1,0 +1,12 @@
+name = EMS - Commerce Rules
+core = 7.x
+package = EMS
+dependencies[] = commerce_order
+dependencies[] = commerce_payment
+dependencies[] = commerce_webform
+dependencies[] = entity
+dependencies[] = rules
+features[features_api][] = api:2
+features[rules_config][] = rules_change_order_status_to_complete_ems_custom_
+features[rules_config][] = rules_mark_commerce_webform_as_paid
+features[rules_config][] = rules_mark_webform_submission_as_paid_ems_custom_

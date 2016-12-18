@@ -17,9 +17,16 @@ function ems_theme_webform_element($variables) {
 
   $output = '<div ' . drupal_attributes($element['#wrapper_attributes']) . '>' . "\n";
   $output .= theme('form_element_label', $variables);
+  $type = $element['#type'];
   $output .= '<span class="description-input">';
-  $output .= $element['#children'];
-  $output .= $description[!$above];
+  if($type == 'checkboxes' || $type == 'radios' || $type == 'webform_productfield') {
+    $output .= $description[!$above];
+    $output .= $element['#children'];
+  }
+  else {
+    $output .= $element['#children'];
+    $output .= $description[!$above];
+  }
   $output .= '</span>';
   $output .= "</div>\n";
 

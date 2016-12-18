@@ -532,6 +532,7 @@ function _webform_submit_productfield($component, $value) {
  * Format the text output for this component.
  */
 function theme_webform_display_productfield($variables) {
+  global $user;
   $element = $variables['element'];
 
   // Flatten the list of options so we can get values easily. These options
@@ -546,7 +547,12 @@ function theme_webform_display_productfield($variables) {
     if (!empty($value->product_id)) {
       if (isset($options[$value->product_id])) {
         $paid_display_option = empty($value->paid) ? t('Unpaid') : t('Paid');
-        $paid_display_option = empty($value->order_id) ? $paid_display_option : l($paid_display_option, "admin/commerce/orders/{$value->order_id}/view");
+        if(user_has_role(4, $user)) {
+          $paid_display_option = empty($value->order_id) ? $paid_display_option : l($paid_display_option, "admin/commerce/orders/{$value->order_id}/view");
+        }
+        else {
+          $paid_display_option = empty($value->order_id) ? $paid_display_option : t($paid_display_option);
+        }
         $name = _webform_filter_xss($options[$value->product_id]);
         $items[] = "{$value->quantity} x {$name} (<strong>{$paid_display_option}</strong>)";
       }

@@ -1,6 +1,20 @@
 <?php
 
 /**
+ * Implements hook_menu().
+ */
+function ems_custom_menu() {
+  $items['admin/config/resend-review-email'] = array(
+    'title' => 'Review email',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ems_custom_resend_review_email'),
+    'access arguments' => array('access content'),
+    'file' => 'ems_custom.pages.inc',
+  );
+
+  return $items;
+}
+/**
  * Implements hook_form_alter().
  */
 function ems_custom_form_alter(&$form, &$form_state, $form_id) {
@@ -65,6 +79,11 @@ function ems_custom_form_views_form_commerce_cart_form_default_alter(&$form, &$f
       }
     }
   }
+
+  $form['actions']['go_back'] = array(
+    '#type' => 'markup',
+    '#markup' => '<button onclick="history.back()">Go Back</button>',
+  );
 }
 
 /**
@@ -182,17 +201,98 @@ function ems_custom_form_webform_results_download_form_alter(&$form, &$form_stat
   }
 }
 
-//todo send email to user after submitting checkout
-///**
-// * Implements hook_commerce_order_presave().
-// */
-//function zsl_custom_commerce_checkout_complete($order) {
-//  $params = _zsl_custom_order_details(array($order));
-//  $params['current_order']->order_number = commerce_billy_invoice_nr_infinite();
-//
-//  drupal_mail('zsl_custom', 'order_confirmation', $order->mail, language_default(), $params);
-//}
+/**
+ * @see hook_commerce_payment_order_paid_in_full().
+ */
+function ems_custom_commerce_payment_order_paid_in_full($order, $transaction) {
+  if ($transaction->payment_method == 'payment_commerce_2') {
+    $order = commerce_order_status_update($order, 'checkout_complete');
+    commerce_checkout_complete($order);
+  }
+}
+function _ems_send_notification_emails($order){
 
+}
+/**
+ * Implements hook_commerce_checkout_complete().
+ */
+function ems_custom_commerce_checkout_complete($order) {
+    $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+    $line_items = $order_wrapper->commerce_line_items->value();
+
+    $sid = 0;
+    foreach ($line_items as $line_item) {
+      if ($webform_submission = commerce_webform_get_webform_submission_from_lineitem($line_item)) {
+        $sid = $webform_submission->sid;
+      }
+    }
+    if ($sid != 0) {
+
+      module_load_include('inc', 'webform', 'includes/webform.submissions');
+      $webform = webform_get_submissions(array('sid' => $sid));
+
+      $nid = $webform[$sid]->nid;
+      $web_submission = webform_get_submission($nid, $sid);
+
+      $node = node_load($nid);
+      $output = webform_submission_render($node, $web_submission, NULL, 'html');
+
+      $name = $output['attendee_set']['full_name']['#value'];
+
+      $params = array(
+        'webform' => drupal_render($output),
+        'order_id' => $order->order_id,
+        'name' => $name
+      );
+
+      $em = drupal_mail('ems_custom', 'order_confirmation', $order->mail, language_default(), $params);
+      $em_2 = drupal_mail('ems_custom', 'order_notification', 'ben@codepulse.co.uk', language_default(), $params);
+    }
+
+
+}
+
+/**
+ * Implements hook_commerce_order_presave().
+ */
+function ems_custom_commerce_order_presave($order) {
+}
+/**
+ * Implements hook_mail().
+ */
+function ems_custom_mail($key, &$message, $params) {
+  $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+  switch ($key) {
+    case 'order_confirmation':
+      $message['subject'] = 'Advanced Process Modelling Forum, London, 25-26 April 2017';
+      $message['body'][] = theme('ems_custom_order_confirmation', $params);
+      break;
+    case 'order_notification':
+      $message['subject'] = 'APM Forum registration';
+      $message['body'][] = theme('ems_custom_order_notification', $params);
+      break;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ems_custom_theme($existing, $type, $theme, $path) {
+  return array(
+    'ems_custom_order_confirmation' => array(
+      'variables' => array(
+        'email_content' => NULL,
+      ),
+      'template' => 'templates/order-confirmation'
+    ),
+    'ems_custom_order_notification' => array(
+      'variables' => array(
+        'email_content' => NULL,
+      ),
+      'template' => 'templates/order-notification-pse'
+    ),
+  );
+}
 function ems_custom_commerce_checkout_page_info_alter(&$checkout_pages) {
   $checkout_pages['review']['help'] = t('<h2>Review your order</h2>');
 }
