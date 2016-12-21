@@ -82,7 +82,12 @@ function ems_custom_form_views_form_commerce_cart_form_default_alter(&$form, &$f
 
   $form['actions']['go_back'] = array(
     '#type' => 'markup',
-    '#markup' => '<button onclick="history.back()">Go Back</button>',
+    '#attributes' => array(
+      'classes' => array(
+        'previous',
+        'back-to-form'
+      )),
+    '#markup' => '<button class="previous back-to-form">Go Back</button>',
   );
 }
 

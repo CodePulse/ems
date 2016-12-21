@@ -5751,6 +5751,8 @@ tr.even, tr.odd {
   -o-user-select: none;
   user-select: none;
 }
+
+button.back-to-form,
 input.form-submit,
 .checkout-continue,
 #commerce-checkout-coupon-ajax-wrapper .form-submit,
@@ -5775,6 +5777,7 @@ input.form-submit,
   text-transform: none;
   font-weight: normal;
 }
+button.back-to-form:hover,
 .checkout-continue:hover,
 #commerce-checkout-coupon-ajax-wrapper .form-submit:hover,
 .view-commerce-cart-form #edit-checkout:hover,
@@ -5786,6 +5789,10 @@ input.form-submit:hover {
   background-image: -moz-linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
   background-image: linear-gradient(bottom, rgb(164,164,166) 21%, rgb(224,221,224) 61%);
   color: #006c85 !important;
+}
+button.back-to-form {
+  padding: 2px 17px;
+  margin-right: 10px;
 }
 body {
   font-family: "news-gothic-std", "NewsGothic", "News Cycle", "Calibri", "Arial Narrow", "Geneva", "Helvetica", "Arial";
