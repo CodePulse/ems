@@ -35,6 +35,6 @@ function ems_custom_review_email_submit($form, &$form_state){
 
   $params = array('webform' => drupal_render($output), 'order_id' => $line_item_linked_to_webform->order_id, 'name' => $name);
 
-  drupal_mail('ems_custom', 'order_confirmation', 'b-lamp@live.co.uk', language_default(), $params);
-  drupal_mail('ems_custom', 'order_notification', 'b-lamp@live.co.uk', language_default(), $params);
+  drupal_mail('ems_custom', 'order_confirmation', 'ben@codepulse.co.uk', language_default(), $params);
+  drupal_mail('ems_custom', 'order_notification', 'ben@codepulse.co.uk', language_default(), $params);
 }
