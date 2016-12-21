@@ -554,7 +554,8 @@ function theme_webform_display_productfield($variables) {
           $paid_display_option = empty($value->order_id) ? $paid_display_option : t($paid_display_option);
         }
         $name = _webform_filter_xss($options[$value->product_id]);
-        $items[] = "{$value->quantity} x {$name} (<strong>{$paid_display_option}</strong>)";
+        $items[] = "{$value->quantity} x {$name}";
+//        $items[] = "{$value->quantity} x {$name} (<strong>{$paid_display_option}</strong>)";
       }
       else {
         $items[] = check_plain($value->product_id);

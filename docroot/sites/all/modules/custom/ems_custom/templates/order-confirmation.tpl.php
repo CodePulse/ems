@@ -20,7 +20,7 @@
 <div><?php print $webform; ?></div>
 <br>
 
-<div><?php print t('If you are attending a workshop, please bring your laptop on the day and note that these will be held in Hammersmith (check for details on the website). [add a hyperlink to the APMF workshop page]'); ?> </div>
+<div><?php print t('If you are attending a workshop, please bring your laptop on the day and note that these will be held in Hammersmith (check for details on ') . l(t('the website'), 'https://www.psenterprise.com/events/uk/2017/apmf/workshops') . ').'; ?> </div>
 <br>
 
 <div><?php print t('If you need any additional information please contact the Event Manager, Sophie Gillespie at s.gillespie@psenterprise.com. We look forward to seeing you at the APM Forum.'); ?> </div>

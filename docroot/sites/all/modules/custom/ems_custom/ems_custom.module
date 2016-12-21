@@ -161,7 +161,7 @@ function ems_custom_commerce_checkout_complete($order) {
       );
 
       drupal_mail('ems_custom', 'order_confirmation', $order->mail, language_default(), $params);
-      drupal_mail('ems_custom', 'order_notification', 'ben@codepulse.co.uk', language_default(), $params);
+      drupal_mail('ems_custom', 'order_notification', 'pse_marketing@psenterprise.com', language_default(), $params);
     }
 
 
