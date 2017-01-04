@@ -5,19 +5,40 @@
  */
 function ems_custom_schema_alter(&$schema) {
   // Add a new property to the commerce_order entity.
-  $schema['webform_submissions']['fields']['has_order'] = array(
+  $schema['commerce_order']['fields']['sid'] = array(
     'type' => 'int',
     'default' => 0,
-    'description' => "Checks to see if this submission is linked to a commerce order.",
+    'description' => "Checks to see if this order is linked to a webform submission.",
   );
 }
 
 /**
- * Add new column to webform_submissions table
+ * Add new column to commerce_order table
  */
 function ems_custom_update_7000() {
-  if (!db_field_exists('webform_submissions', 'has_order')) {
-    $schema = drupal_get_schema('webform_submissions');
-    db_add_field('webform_submissions', 'has_order', $schema['fields']['has_order']);
+  if (!db_field_exists('commerce_order', 'sid')) {
+    $schema = drupal_get_schema('commerce_order');
+    db_add_field('commerce_order', 'sid', $schema['fields']['sid']);
+  }
+}
+
+/**
+ * Update all existing orders to store SID
+ */
+function ems_custom_update_7001() {
+  $all_orders = commerce_order_load_multiple(array(), array('status' => 'pending', 'sid' => 0));
+  foreach($all_orders as $order){
+    $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+
+    $line_items = $order_wrapper->commerce_line_items->value();
+
+    $sid = 0;
+    foreach ($line_items as $line_item) {
+      if ($webform_submission = commerce_webform_get_webform_submission_from_lineitem($line_item)) {
+        $sid = $webform_submission->sid;
+      }
+    }
+    $order_wrapper->sid->set((int) $sid);
+    $order_wrapper->save();
   }
 }

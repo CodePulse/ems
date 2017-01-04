@@ -20,17 +20,16 @@ function ems_custom_menu() {
  * @param $info
  */
 function ems_custom_entity_property_info_alter(&$info) {
-  $properties = &$info['webform_submissions']['properties'];
+  $properties = &$info['commerce_order']['properties'];
 
-  $properties['has_order'] = array(
-    'label' => t("Has Order?"),
-    'description' => t("This property determines whether this submission is linked to an order."),
-    'type' => 'text',
+  $properties['sid'] = array(
+    'label' => t("Linked to webform submission"),
+    'description' => "Checks to see if this order is linked to a webform submission.",
+    'type' => 'integer',
     'getter callback' => 'entity_property_verbatim_get',
     'setter callback' => 'entity_property_verbatim_set',
     'entity views field' => TRUE,
   );
-
 }
 
 /**
@@ -179,11 +178,12 @@ function ems_custom_commerce_checkout_complete($order) {
         'name' => $name
       );
 
+      $order_wrapper->sid->set((int) $sid);
+      $order_wrapper->save();
+
       drupal_mail('ems_custom', 'order_confirmation', $order->mail, language_default(), $params);
       drupal_mail('ems_custom', 'order_notification', 'pse_marketing@psenterprise.com', language_default(), $params);
     }
-
-
 }
 
 /**
