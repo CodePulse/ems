@@ -14,6 +14,25 @@ function ems_custom_menu() {
 
   return $items;
 }
+
+/**
+ * Implements hook_entity_property_info_alter()
+ * @param $info
+ */
+function ems_custom_entity_property_info_alter(&$info) {
+  $properties = &$info['webform_submissions']['properties'];
+
+  $properties['has_order'] = array(
+    'label' => t("Has Order?"),
+    'description' => t("This property determines whether this submission is linked to an order."),
+    'type' => 'text',
+    'getter callback' => 'entity_property_verbatim_get',
+    'setter callback' => 'entity_property_verbatim_set',
+    'entity views field' => TRUE,
+  );
+
+}
+
 /**
  * Implements hook_form_alter().
  */
@@ -289,4 +308,11 @@ function ems_custom_line_item_has_specific_quantity_attributes_build($line_item_
 //  }
 //  return empty($products_sku);
 
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function ems_custom_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }

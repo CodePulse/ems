@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Implements hook_schema_alter().
+ */
+function ems_custom_schema_alter(&$schema) {
+  // Add a new property to the commerce_order entity.
+  $schema['webform_submissions']['fields']['has_order'] = array(
+    'type' => 'int',
+    'default' => 0,
+    'description' => "Checks to see if this submission is linked to a commerce order.",
+  );
+}
+
+/**
+ * Add new column to webform_submissions table
+ */
+function ems_custom_update_7000() {
+  if (!db_field_exists('webform_submissions', 'has_order')) {
+    $schema = drupal_get_schema('webform_submissions');
+    db_add_field('webform_submissions', 'has_order', $schema['fields']['has_order']);
+  }
+}
