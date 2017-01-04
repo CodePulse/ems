@@ -316,3 +316,16 @@ function ems_custom_line_item_has_specific_quantity_attributes_build($line_item_
 function ems_custom_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
+
+/**
+ * Implements hook_query_TAG_alter().
+ */
+function ems_custom_query_webform_download_sids_alter(QueryAlterableInterface $query) {
+  $query->join('commerce_order', 'co', 'ws.sid = co.sid');
+  $query->condition('co.sid', 0, '!=');
+
+}
+
+function ems_custom_query_webform_get_submission_count_alter(QueryAlterableInterface $query) {
+  $query->join('commerce_order', 'co', 'ws.sid = co.sid');
+}
