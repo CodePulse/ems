@@ -8,7 +8,7 @@
  */
 function ems_custom_views_query_alter(&$view, &$query) {
   $view_name = $view->name;
-  if ($view_name == 'webform_submissions'){
+  if ($view_name == 'webform_submissions' || $view_name == 'webform_results' || $view_name == 'webform_analysis'){
     $join = new views_join();
     $join->table = 'commerce_order';
     $join->field = 'sid';
@@ -16,7 +16,7 @@ function ems_custom_views_query_alter(&$view, &$query) {
     $join->left_field = 'sid';
     $join->type = 'LEFT';
 
-    $query->add_relationship('orders', $join);
+    $query->add_relationship('orders', $join, 'tag-custom-ems');
 
     $where['conditions'][] = array(
       'field' => 'orders.sid',
