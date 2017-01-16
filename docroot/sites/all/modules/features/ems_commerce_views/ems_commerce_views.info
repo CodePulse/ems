@@ -23,6 +23,4 @@ features[views_view][] = commerce_products
 features[views_view][] = commerce_user_orders
 features[views_view][] = coupons
 features[views_view][] = order_coupon_list
-features[views_view][] = payment_methods
-features[views_view][] = payments
 features_exclude[dependencies][ctools] = ctools

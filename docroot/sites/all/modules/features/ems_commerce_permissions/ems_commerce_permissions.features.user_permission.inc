@@ -64,6 +64,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'administer commerce_order entities',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
@@ -173,6 +174,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'configure order settings',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
@@ -227,6 +229,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'create commerce_order entities',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
@@ -236,6 +239,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'create commerce_order entities of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
@@ -328,6 +332,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'edit any commerce_order entity of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
@@ -402,6 +407,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'edit own commerce_order entities of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
@@ -649,6 +655,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'view any commerce_customer_profile entity',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_customer',
   );
@@ -658,6 +665,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'view any commerce_customer_profile entity of bundle billing',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_customer',
   );
@@ -667,6 +675,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'view any commerce_order entity',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
@@ -676,6 +685,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'view any commerce_order entity of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
@@ -752,6 +762,7 @@ function ems_commerce_permissions_user_default_permissions() {
     'name' => 'view own commerce_order entities of bundle commerce_order',
     'roles' => array(
       'administrator' => 'administrator',
+      'content administrator' => 'content administrator',
     ),
     'module' => 'commerce_order',
   );
