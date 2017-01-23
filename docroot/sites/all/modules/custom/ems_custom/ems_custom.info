@@ -1,3 +1,5 @@
 name = EMS Custom
 description = EMS Custom module
 core = 7.x
+
+files[] = views/handlers/order_id_handler_field.inc

@@ -314,7 +314,10 @@ function ems_custom_line_item_has_specific_quantity_attributes_build($line_item_
  * Implements hook_views_api().
  */
 function ems_custom_views_api($module = NULL, $api = NULL) {
-  return array("api" => "3.0");
+  return array(
+    "api" => "3.0",
+    'path' => drupal_get_path('module', 'ems_custom') . '/views',
+  );
 }
 
 /**
