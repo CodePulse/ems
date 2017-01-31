@@ -50,6 +50,12 @@ function ems_custom_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Implements hook_form_FORM_ID_alter().
  */
+function ems_custom_form_commerce_paypal_ec_order_form_alter(&$form, &$form_state, $form_id) {
+  unset($form['paypal_ec']);
+}
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
 function ems_custom_form_commerce_checkout_form_checkout_alter(&$form, &$form_state, $form_id) {
   $form['buttons']['continue']['#weight'] = 1000;
   $form['buttons']['back']['#weight'] = -1000;
