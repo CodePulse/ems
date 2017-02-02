@@ -338,3 +338,12 @@ function ems_custom_query_webform_download_sids_alter(QueryAlterableInterface $q
 function ems_custom_query_webform_get_submission_count_alter(QueryAlterableInterface $query) {
   $query->join('commerce_order', 'co', 'ws.sid = co.sid');
 }
+
+function ems_custom_entity_view($order, $type, $view_mode, $langcode) {
+  if ($order->type == 'commerce_order'){
+    $order->content['order_mail'] = array(
+      '#markup' => '<label>' . t('Email: ') . '</label>' . $order->mail,
+      '#weight' => 1,
+    );
+  }
+}
